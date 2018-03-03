@@ -1,12 +1,17 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 熊熊要获取您的头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  
+  <map bindmarkertap="markertap" longitude="121.45" latitude="31.03" style="width: 100%; height: 450px;"></map>
+  <button bindtap="clickMe">点击我</button>
+  <view>{{ msg }}</view>
+  
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>

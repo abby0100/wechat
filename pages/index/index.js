@@ -3,6 +3,12 @@
 const app = getApp()
 
 Page({
+
+  // Added by xy
+  clickMe: function () {
+    this.setData({ msg: "叫你点你就点啊真听话" })
+  },
+  
   data: {
     motto: 'Hello World',
     userInfo: {},
@@ -49,6 +55,25 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+    wx.getLocation({
+      type: 'wgs84',
+      success: (res) => {
+        var latitude = res.latitude // 经度
+        var longitude = res.longitude // 纬度
+      }
+    })
+    wx.openLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        wx.openLocation({
+          latitude: latitude,
+          longitude: longitude,
+          scale: 28
+        })
+      }
     })
   }
 })
